@@ -11,8 +11,10 @@ TEMPLATE = """<document version="2.0">
 </document>
 """
 
+
 def main(course_id):
-    holiday_dates = [datetime.strptime(date_str, '%m/%d/%y').date() for date_str in HOLIDAYS]
+    holiday_dates = [datetime.strptime(
+        date_str, '%m/%d/%y').date() for date_str in HOLIDAYS]
 
     if datetime.today().date() in holiday_dates:
         return
@@ -36,9 +38,11 @@ def main(course_id):
         "anonymous_comments": True
     })
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--test", action="store_true", help="perform actions on test Ed")
+    parser.add_argument("--test", action="store_true",
+                        help="perform actions on test Ed")
     args = parser.parse_args()
     course_id = (TEST_COURSE_ID if args.test else COURSE_ID)
 
